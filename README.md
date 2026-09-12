@@ -1,15 +1,17 @@
 # Effort map
 
-**Match the thinking to the task.** An interactive reference built from twelve of
-Travis Bonnet’s real task cases: capture and analysis, review, and implementation.
-Choose a task, see his starting model and effort, then explore the available settings
-without changing that recommendation.
+**Match the thinking to the task.** A short method for choosing a model and effort
+level: start with the lowest effort that reliably clears the work, raise it only for an
+observed reason, diagnose a failed run before raising effort, and compare settings on
+the same task against the same checks. Then one worked example: twelve of Travis
+Bonnet’s real task cases, where you choose a task, see his starting model and effort,
+and explore the available settings without changing that recommendation.
 
 **Live:** [travismakes.org/effort-map](https://travismakes.org/effort-map/)
 
-The map records a **September 2026 field study**. These are personal starting points,
-not measured rankings. Higher effort cannot supply missing evidence, grant permission,
-or guarantee a better result.
+The worked example records a **September 2026 field study**. These are personal
+starting points, not measured rankings. Higher effort cannot supply missing evidence,
+grant permission, or guarantee a better result.
 
 ## Use it
 

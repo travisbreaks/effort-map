@@ -158,6 +158,10 @@
       @media (max-width: 360px) { #effort-motion { padding: 20px 12px; } }
       @container (max-width: 270px) { #effort-motion .ef-track { margin-inline: -9px; width: calc(100% + 18px); } }
       @media (prefers-reduced-motion: reduce) { #effort-motion .ef-point .ef-dot, #effort-motion .ef-row { transition: none; } }
+      #effort-motion .ef-method { padding: 22px 0 24px; border-bottom: 1px solid var(--ef-line); }
+      #effort-motion .ef-method h2 { font-size: 18px; font-weight: 500; line-height: 1.25; margin-bottom: 12px; }
+      #effort-motion .ef-method .ef-rule { max-width: 660px; }
+      #effort-motion .ef-example { margin-top: 22px; font-size: 14px; color: var(--ef-muted); }
     </style>
 
     <div class="ef-top">
@@ -165,6 +169,17 @@
       <span>Field study · model &amp; effort</span>
     </div>
 
+    <section class="ef-method" aria-labelledby="ef-method-title">
+      <h2 id="ef-method-title">How to choose a setting</h2>
+      <ol class="ef-rule">
+        <li>Start with the lowest effort that reliably clears the work.</li>
+        <li>Raise it for an observed reason: a failed attempt, contradictory findings, a missing dependency, an unresolved tradeoff.</li>
+        <li>When a run fails, name the failed requirement first. Check the evidence, the instructions and the tool results before raising effort or changing models. Higher effort cannot supply missing evidence.</li>
+        <li>To compare two settings, run the same task in fresh sessions against the same checks. Keep the lowest setting that passes.</li>
+      </ol>
+    </section>
+
+    <p class="ef-example">A worked example: my own routing, September 2026</p>
     <noscript><p>Interactive exploration needs JavaScript. Open “All twelve starting points, in plain text” below for the complete map.</p></noscript>
     <div class="ef-work">
       <div class="ef-start">
