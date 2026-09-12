@@ -1,0 +1,32 @@
+/**
+ * Effort map: served at travismakes.org/effort-map/ by its own Worker, so the tool
+ * ships from its own repository.
+ *
+ * Routing. travismakes.org itself is a Custom Domain on a different Worker.
+ * Cloudflare's routing documentation states that a route takes precedence over a
+ * Custom Domain on the same hostname, so these routes claim only the /effort-map
+ * paths and the rest of the site is untouched. The pattern is "effort-map*" rather
+ * than "effort-map/*" because the wildcard matches zero or more characters: the
+ * bare /effort-map also reaches this Worker, which redirects it to /effort-map/.
+ * www is listed separately because it serves the site directly rather than
+ * redirecting to the apex.
+ *
+ * No script. This is Workers Static Assets only. dist/ is assembled by
+ * scripts/package.mjs from the portable site/index.html.
+ *
+ * The account id is deliberately left out of this public file. Supply it with
+ * CLOUDFLARE_ACCOUNT_ID when deploying.
+ */
+{
+  "name": "effort-map",
+  "compatibility_date": "2026-09-12",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "travismakes.org/effort-map*", "zone_name": "travismakes.org" },
+    { "pattern": "www.travismakes.org/effort-map*", "zone_name": "travismakes.org" }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash"
+  }
+}

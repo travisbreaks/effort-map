@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Match the Thinking to the Task · travisMAKES</title>
+  <meta name="description" content="A model and effort field study. Twelve real cases from my own routing across ChatGPT and Claude Code, each with a starting model and effort and the conditions to step up or down, on top of every documented effort setting for GPT-6 Astra, GPT-5.6 Sol, Claude Fable 5.1 and Claude Opus 5.">
+
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2305d9e8' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="canonical" href="https://travismakes.org/effort-map/">
+  <meta property="og:url"         content="https://travismakes.org/effort-map/">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Match the thinking to the task">
+  <meta property="og:description" content="A model and effort field study: twelve real cases with a starting point and the conditions to change it, on top of every documented effort setting on four current models.">
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:title"       content="Match the thinking to the task">
+  <meta name="twitter:description" content="A model and effort field study: twelve real cases with a starting point and the conditions to change it, on top of every documented effort setting on four current models.">
+
+
+
+  <style>
+    :root { color-scheme: light dark; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: light-dark(#f8f9fc, #171b24);
+      color: light-dark(#172136, #f0f2f8);
+      font-family: system-ui, sans-serif;
+      font-size: 15px; line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .site { max-width: 1040px; margin: 0 auto; padding: 22px 30px 0; }
+    .site-nav { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 12px; }
+    .site-nav a { color: light-dark(#566175, #b0bacd); text-decoration: none; }
+    .site-nav a:hover, .site-nav a[aria-current="page"] { color: light-dark(#172136, #f0f2f8); }
+    .site-nav a:focus-visible { outline: 2px solid light-dark(#264ecc, #a8baff); outline-offset: 3px; }
+    .site-foot { max-width: 1040px; margin: 0 auto; padding: 0 30px 40px; font-size: 12px; color: light-dark(#566175, #b0bacd); display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; }
+    .site-foot a { color: light-dark(#264ecc, #a8baff); text-underline-offset: 3px; }
+    .site-foot a:focus-visible { outline: 2px solid light-dark(#264ecc, #a8baff); outline-offset: 3px; }
+    #effort-motion { max-width: 1040px; margin: 0 auto; }
+    @media (max-width: 420px) { .site { padding: 18px 16px 0; } .site-foot { padding: 0 16px 32px; } }
+    @media (max-width: 360px) { .site { padding: 18px 12px 0; } .site-foot { padding: 0 12px 32px; } }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <nav class="site-nav" aria-label="Travis's sites">
+      <a href="https://travisbreaks.org" rel="noopener">travisbreaks.org</a>
+      <a href="https://travismakes.org">travismakes.org</a>
+      <a href="https://travisfixes.com" rel="noopener">travisfixes.com</a>
+    </nav>
+  </div>
+
+  <main id="effort-motion" aria-label="Model and effort guide">
+    <style>
+      #effort-motion {
+        --ef-paper: light-dark(#f8f9fc, #171b24);
+        --ef-ink: light-dark(#172136, #f0f2f8);
+        --ef-muted: light-dark(#566175, #b0bacd);
+        --ef-line: light-dark(#d5dce8, #424c60);
+        --ef-blue: light-dark(#264ecc, #a8baff);
+        --ef-tint: light-dark(#e8edfb, #29344c);
+        font-family: system-ui, sans-serif;
+        color: var(--ef-ink); background: var(--ef-paper);
+        padding: 30px; box-sizing: border-box; font-size: 15px; line-height: 1.5;
+        container-type: inline-size;
+      }
+      #effort-motion * { box-sizing: border-box; }
+      #effort-motion h1, #effort-motion h2, #effort-motion h3, #effort-motion p { margin: 0; font-weight: 400; }
+      #effort-motion .ef-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding-bottom: 23px; border-bottom: 1px solid var(--ef-line); }
+      #effort-motion h1 { font-size: 32px; letter-spacing: -1.1px; line-height: 1.15; font-weight: 500; color: var(--ef-ink); }
+      #effort-motion .ef-top span { font-size: 12px; color: var(--ef-muted); white-space: nowrap; }
+      #effort-motion .ef-work { display: grid; grid-template-columns: minmax(180px, .8fr) minmax(0, 1.75fr); gap: 32px; margin-top: 25px; }
+      #effort-motion label { display: block; font-size: 14px; margin-bottom: 7px; color: var(--ef-muted); }
+      #effort-motion select { width: 100%; font: inherit; font-size: 16px; background: var(--ef-paper); color: var(--ef-ink); padding: 11px 28px 11px 11px; border: 1px solid var(--ef-line); border-radius: 4px; }
+      #effort-motion .ef-answer { padding-top: 27px; min-height: 276px; }
+      #effort-motion .ef-eyebrow { font-size: 13px; color: var(--ef-muted); margin-bottom: 7px; }
+      #effort-motion .ef-task-title { font-size: 14px; margin-bottom: 12px; }
+      #effort-motion .ef-answer h2 { font-size: 25px; font-weight: 500; line-height: 1.18; letter-spacing: -.6px; }
+      #effort-motion .ef-level { color: var(--ef-blue); display: block; margin-top: 4px; }
+      #effort-motion .ef-reason { margin-top: 16px; color: var(--ef-ink); }
+      #effort-motion .ef-trigger { font-size: 13px; color: var(--ef-muted); margin-top: 12px; }
+      #effort-motion .ef-trigger:empty, #effort-motion .ef-alt:empty { display: none; }
+      #effort-motion .ef-trigger b, #effort-motion .ef-alt b { color: var(--ef-ink); font-weight: 500; }
+      #effort-motion .ef-alt { font-size: 14px; color: var(--ef-muted); margin-top: 8px; }
+      #effort-motion .ef-status { font-size: 12px; color: var(--ef-muted); margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--ef-line); }
+      #effort-motion .ef-compare-title { display: flex; justify-content: space-between; gap: 15px; color: var(--ef-muted); font-size: 13px; padding-bottom: 12px; }
+      #effort-motion .ef-selection { min-height: 3em; margin-bottom: 10px; font-size: 13px; color: var(--ef-muted); }
+      #effort-motion .ef-row { display: grid; grid-template-columns: 138px minmax(0, 1fr); gap: 6px; align-items: center; padding: 16px 0 18px; border-top: 1px solid var(--ef-line); transition: background-color 160ms ease; position: relative; }
+      #effort-motion .ef-row[data-selected='true'] .ef-model { color: var(--ef-blue); }
+      #effort-motion #ef-rows { position: relative; }
+      #effort-motion .ef-signal { position: absolute; left: 0; top: 0; width: 19px; height: 19px; background: var(--ef-blue); border-radius: 50%; pointer-events: none; z-index: 2; }
+      #effort-motion .ef-signal::after { content: ''; position: absolute; inset: -6px; border: 1px solid var(--ef-blue); border-radius: 50%; opacity: .25; }
+      #effort-motion .ef-model { font-size: 16px; font-weight: 500; line-height: 1.2; }
+      #effort-motion .ef-version { display: block; font-size: 12px; font-weight: 400; color: var(--ef-muted); margin-top: 5px; }
+      #effort-motion .ef-track { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); position: relative; align-items: start; }
+      #effort-motion .ef-track::before { content: ''; position: absolute; left: 8.33%; right: 8.33%; top: 20px; height: 1px; background: var(--ef-line); }
+      #effort-motion .ef-track.ef-five::before { left: 25%; }
+      #effort-motion .ef-point { position: relative; display: flex; align-items: center; flex-direction: column; width: 100%; min-height: 60px; padding: 11px 0 0; background: transparent; color: var(--ef-muted); border: 0; border-radius: 3px; font: inherit; font-size: 12px; line-height: 1.2; cursor: pointer; }
+      #effort-motion .ef-point .ef-dot { display: block; width: 19px; height: 19px; border: 1.5px solid var(--ef-muted); background: var(--ef-paper); border-radius: 50%; margin-bottom: 10px; transition: transform 150ms ease, background-color 150ms ease; }
+      #effort-motion .ef-point:focus-visible .ef-dot { transform: scale(1.25); border-color: var(--ef-blue); }
+      @media (hover: hover) and (pointer: fine) {
+        #effort-motion .ef-row:has(.ef-point:hover) { background: color-mix(in srgb, var(--ef-tint) 52%, transparent); }
+        #effort-motion .ef-point:hover .ef-dot { transform: scale(1.25); border-color: var(--ef-blue); }
+        #effort-motion .ef-point:hover { color: var(--ef-ink); }
+      }
+      #effort-motion .ef-point[aria-pressed='true'] { color: var(--ef-blue); font-weight: 500; }
+      #effort-motion .ef-point[aria-pressed='true'] .ef-dot { border-color: var(--ef-blue); }
+      #effort-motion .ef-empty { min-height: 60px; }
+      #effort-motion .ef-note { color: var(--ef-muted); font-size: 12px; padding-top: 12px; border-top: 1px solid var(--ef-line); }
+      #effort-motion .ef-feedback { position: relative; color: var(--ef-muted); font-size: 13px; min-height: 92px; padding: 12px 0 12px 13px; margin-top: 12px; border-left: 2px solid var(--ef-line); }
+      #effort-motion .ef-feedback b { color: var(--ef-ink); font-weight: 500; }
+      #effort-motion .ef-feedback .ef-cue { display: block; margin-top: 4px; }
+      #effort-motion details { border-top: 1px solid var(--ef-line); margin-top: 24px; padding-top: 4px; font-size: 13px; color: var(--ef-muted); }
+      #effort-motion details + details { margin-top: 4px; }
+      #effort-motion summary { cursor: pointer; display: list-item; width: 100%; min-height: 44px; padding: 12px 0; line-height: 20px; }
+      #effort-motion summary:focus-visible { outline: 2px solid var(--ef-blue); outline-offset: 3px; }
+      #effort-motion .ef-scrollcue { display: none; font-size: 12px; color: var(--ef-muted); padding: 10px 0 8px; }
+      #effort-motion .ef-tablewrap:focus-visible { outline: 2px solid var(--ef-blue); outline-offset: 0; }
+      #effort-motion .ef-reading { display: grid; gap: 11px; padding-top: 12px; max-width: 660px; }
+      #effort-motion .ef-reading b { color: var(--ef-ink); font-weight: 500; }
+      #effort-motion .ef-rule { margin: 0; padding-left: 22px; display: grid; gap: 7px; }
+      #effort-motion a { color: var(--ef-blue); text-underline-offset: 3px; }
+      #effort-motion a:focus-visible { outline: 2px solid var(--ef-blue); outline-offset: 3px; }
+      #effort-motion .ef-sources { display: flex; gap: 10px 20px; flex-wrap: wrap; }
+      #effort-motion .ef-tablewrap { overflow-x: auto; padding-top: 12px; }
+      #effort-motion table { border-collapse: collapse; font-size: 13px; min-width: 520px; }
+      #effort-motion caption { text-align: left; color: var(--ef-muted); padding-bottom: 8px; white-space: nowrap; }
+      #effort-motion th, #effort-motion td { text-align: left; padding: 7px 14px 7px 0; border-bottom: 1px solid var(--ef-line); vertical-align: top; font-weight: 400; white-space: nowrap; }
+      #effort-motion th { color: var(--ef-muted); }
+      #effort-motion .ef-routing { min-width: 800px; max-width: 980px; }
+      #effort-motion .ef-routing th, #effort-motion .ef-routing td { white-space: normal; min-width: 130px; }
+      #effort-motion th[scope="row"] { color: var(--ef-ink); }
+      @container (max-width: 660px) {
+        #effort-motion .ef-scrollcue { display: block; }
+        #effort-motion .ef-work { grid-template-columns: 1fr; gap: 22px; }
+        #effort-motion .ef-answer { min-height: 0; padding-top: 22px; }
+        #effort-motion .ef-answer h2 { font-size: 24px; }
+        #effort-motion .ef-level { display: inline; margin-left: 8px; }
+        #effort-motion .ef-reason { margin-top: 12px; }
+        #effort-motion .ef-trigger { margin-top: 10px; }
+        #effort-motion .ef-top { align-items: flex-start; }
+        #effort-motion .ef-top span { display: none; }
+        #effort-motion .ef-row { grid-template-columns: 148px minmax(0, 1fr); }
+      }
+      @container (max-width: 450px) {
+        #effort-motion h1 { font-size: 29px; }
+        #effort-motion .ef-row { grid-template-columns: 1fr; gap: 9px; padding: 14px 0; }
+        #effort-motion .ef-model { font-size: 16px; }
+        #effort-motion .ef-version { display: inline; margin-left: 8px; }
+        #effort-motion .ef-track { padding: 0; }
+        #effort-motion .ef-compare-title span:last-child { display: none; }
+        #effort-motion .ef-level { display: block; margin-left: 0; }
+      }
+      @media (max-width: 420px) { #effort-motion { padding: 20px 16px; } }
+      @media (max-width: 360px) { #effort-motion { padding: 20px 12px; } }
+      @container (max-width: 270px) { #effort-motion .ef-track { margin-inline: -9px; width: calc(100% + 18px); } }
+      @media (prefers-reduced-motion: reduce) { #effort-motion .ef-point .ef-dot, #effort-motion .ef-row { transition: none; } }
+    </style>
+
+    <div class="ef-top">
+      <h1>Match the thinking to the task.</h1>
+      <span>Field study · model &amp; effort</span>
+    </div>
+
+    <noscript><p>Interactive exploration needs JavaScript. Open “All twelve starting points, in plain text” below for the complete map.</p></noscript>
+    <div class="ef-work">
+      <div class="ef-start">
+        <label for="ef-task">What are you working on?</label>
+        <select id="ef-task">
+          /* TASK_OPTIONS */
+        </select>
+        <div class="ef-answer" aria-live="polite" aria-atomic="true">
+          <p class="ef-eyebrow" id="ef-kind">From my log</p>
+          <p class="ef-task-title" id="ef-task-title"></p>
+          <h2><span id="ef-model-answer"></span><span id="ef-level-answer" class="ef-level"></span></h2>
+          <p class="ef-alt" id="ef-alt"></p>
+          <p class="ef-reason" id="ef-reason"></p>
+          <p class="ef-trigger" id="ef-up"></p>
+          <p class="ef-trigger" id="ef-down"></p>
+          <p class="ef-status">My starting point in September 2026, not a rule. Check it on your work.</p>
+        </div>
+      </div>
+      <div class="ef-board" aria-label="Explore each model's documented effort levels">
+        <div class="ef-compare-title"><span>Explore another setting</span><span>Less effort → more effort</span></div>
+        <p id="ef-selection" class="ef-selection" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div id="ef-rows"></div>
+        <div class="ef-feedback" id="ef-feedback" aria-hidden="true"><b>Exploring: Opus 5 · Medium.</b> A middle setting for a defined task with several steps.</div>
+        <p class="ef-note">Each row has its own scale. Matching labels do not mean equal capability or compute.</p>
+      </div>
+    </div>
+
+    <details>
+      <summary>All twelve starting points, in plain text</summary>
+      <div class="ef-reading"><p>Travis’s September 2026 field study. Alternatives are equal starting points. An absent trigger means no condition was recorded, not that changing effort is forbidden.</p></div>
+      <div class="ef-tablewrap" role="region" aria-label="Complete task routing map" tabindex="0">/* ROUTING_TABLE */</div>
+    </details>
+
+    <details>
+      <summary>Evidence &amp; how the settings differ</summary>
+      <div class="ef-reading">
+        <p><b>Use the lowest effort that reliably clears the work, and escalate for an observed reason</b>: a failed attempt, contradictory findings, a missing dependency, an unresolved tradeoff. Higher effort can improve planning and checking. It can also take longer, cost more, and expand past what you asked for. When a run fails, identify the failed requirement. Check the evidence, the instructions and the tool result before deciding whether to raise effort or change models.</p>
+        <p>Two layers, kept apart. <b>The presets are my own routing</b>, logged in September 2026 across the three places I work: where I start, and the conditions I actually change on. They are one practitioner's record, not measured task rankings; no matched trials sit behind them. <b>The ladders reflect documented API support</b>, checked September 12, 2026. Short cues combine vendor summaries with this guide’s practical advice; they are not measured task rankings. App menus can differ: availability depends on rollout, sign-in method and client, some menus show only a subset of these levels, and ChatGPT can label Low as Light.</p>
+        <p>Model choice changes the underlying capabilities. Effort changes how that model approaches the work. Higher effort cannot supply missing evidence.</p>
+        <p>None is a separate setting available here only for Sol; Astra’s API effort range starts at Low. Extra High and Max are different levels and stay separate. Anthropic recommends starting Fable 5.1 and Opus 5 at High; on Opus 5, thinking can be switched off at High or below.</p>
+        <div class="ef-sources">
+          <a href="https://developers.openai.com/api/docs/models/gpt-6-astra" rel="noopener">Astra specification</a>
+          <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol" rel="noopener">Sol specification</a>
+          <a href="https://learn.chatgpt.com/docs/models" rel="noopener">ChatGPT model and Power guidance</a>
+          <a href="https://platform.claude.com/docs/en/build-with-claude/effort" rel="noopener">Claude effort guidance</a>
+          <a href="https://platform.claude.com/docs/en/models/fable-5-1/overview" rel="noopener">Fable 5.1 specification</a>
+          <a href="https://platform.claude.com/docs/en/models/opus-5/overview" rel="noopener">Opus 5 specification</a>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>The short version of my routing</summary>
+      <div class="ef-reading">
+        <ol class="ef-rule">
+          <li><b>Capturing or chatting?</b> Start with Sol.</li>
+          <li><b>Untangling or researching?</b> Astra Medium, or High.</li>
+          <li><b>Reviewing my coding agent's consequential work?</b> Astra Extra High.</li>
+          <li><b>Implementing routine code?</b> Opus 5 Medium.</li>
+          <li><b>Implementing difficult code?</b> Opus 5 High.</li>
+          <li><b>Building substantial systems or making nuanced design decisions?</b> Fable 5.1 High.</li>
+          <li><b>Architecture, migrations, or hard bugs?</b> Fable 5.1 Extra High.</li>
+          <li><b>Still stuck on one clearly defined hard problem?</b> Try Max, with the failed attempt and the exact issue in the prompt.</li>
+          <li><b>Can the task be divided into independent workstreams?</b> Consider explicit delegation, Ultra, or Ultracode.</li>
+        </ol>
+        <p>Highest useful productivity, not highest available setting.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Orchestration modes: Ultra and Ultracode</summary>
+      <div class="ef-reading">
+        <p>Two product settings sit outside these effort ladders because they change how the work is organized, not only how hard one model thinks.</p>
+        <p><b>Ultra</b>, in ChatGPT Work on eligible accounts and supported models, uses maximum reasoning and lets ChatGPT delegate suitable work to subagents on its own when parallel agents would materially improve speed or quality. At other levels you ask for subagents explicitly. Current local Codex releases spawn agents only after a direct request or an applicable project or skill instruction, so the same setting name does not promise the same behavior in every client.</p>
+        <p><b>Ultracode</b>, in Claude Code, is a session setting rather than a model effort value. It sends Extra High to the model and switches on dynamic workflows for substantive tasks.</p>
+        <p>Use either only when independent workstreams make parallel work worth its overhead. Neither is a higher rung on a single model's ladder.</p>
+        <div class="ef-sources">
+          <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" rel="noopener">ChatGPT subagents and Ultra</a>
+          <a href="https://code.claude.com/docs/en/model-config" rel="noopener">Claude Code model configuration</a>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary id="ef-bench-title">Benchmark snapshot</summary>
+      <div class="ef-reading" id="ef-bench-desc">
+        <p>Artificial Analysis Intelligence Index v4.3, read from the provider pages on September 8, 2026. Each cell is the index score followed by the estimated cost in US dollars per index task. These are weighted estimates for one composite benchmark; they are not prices for your work, not a subscription allowance, and not a ranking of which model suits a given task. Fable 5.1 rows are the "default fallback" configuration on that site. None-effort rows are omitted. These historical values were preserved from the September 10 build and were not independently rechecked during the September 12 recovery.</p>
+        <div class="ef-sources">
+          <a href="https://artificialanalysis.ai/providers/openai" rel="noopener">OpenAI models on Artificial Analysis</a>
+          <a href="https://artificialanalysis.ai/providers/anthropic" rel="noopener">Anthropic models on Artificial Analysis</a>
+          <a href="https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index" rel="noopener">Index methodology</a>
+        </div>
+      </div>
+      <p class="ef-scrollcue" aria-hidden="true">The table scrolls sideways.</p>
+      <div class="ef-tablewrap" role="region" tabindex="0" aria-labelledby="ef-bench-title" aria-describedby="ef-bench-desc">
+        <table id="ef-bench">
+          <caption>Index score · USD per index task</caption>
+        </table>
+      </div>
+    </details>
+
+    <script>
+      (() => {
+        const root = document.getElementById('effort-motion');
+        const {labels,models,effortCue,ENV,tasks,bench} = /* MAP_DATA */;
+        const routeName = rt => models.find(x=>x.id===rt.m).full+' · '+labels[rt.r];
+        const shortName = rt => models.find(x=>x.id===rt.m).name+' '+labels[rt.r];
+        const cueFor = (m,r) => effortCue[m.vendor][r];
+        const state = {m:tasks.t1.routes[0].m,r:tasks.t1.routes[0].r,task:'t1',manual:false};
+        const rows = root.querySelector('#ef-rows');
+        const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+        const fine = matchMedia('(hover: hover) and (pointer: fine)');
+        const motionStyle = {duration:360};
+        let previewButton = null, hoverButton = null, focusButton = null;
+        let signalAnimation = null, settleAnimation = null, resizeRequest = null;
+        function showFeedback(button){
+          previewButton = button;
+          const m = models.find(x=>x.id===(button ? button.dataset.model : state.m));
+          const r = button ? Number(button.dataset.rung) : state.r;
+          const preview = button && !(m.id===state.m && r===state.r);
+          const target=root.querySelector('#ef-feedback');
+          target.replaceChildren();
+          const title=document.createElement('b');
+          title.textContent=(preview?'Preview: ':'Exploring: ')+m.name+' · '+labels[r]+'. ';
+          const cue=document.createElement('span'); cue.className='ef-cue'; cue.textContent=m.note;
+          target.append(title,document.createTextNode(cueFor(m,r)),cue);
+        }
+        models.forEach(m => {
+          const row = document.createElement('div'); row.className='ef-row'; row.dataset.model=m.id;
+          const name = document.createElement('div'); name.className='ef-model';
+          name.textContent=m.name;
+          const version=document.createElement('span'); version.className='ef-version'; version.textContent=m.version; name.appendChild(version); row.appendChild(name);
+          const track=document.createElement('div'); track.className='ef-track'+(m.first?' ef-five':'');
+          labels.forEach((label,r)=>{
+            if(r<m.first){ const empty=document.createElement('span'); empty.className='ef-empty'; empty.setAttribute('aria-hidden','true'); track.appendChild(empty); return; }
+            const b=document.createElement('button'); b.type='button'; b.className='ef-point'; b.dataset.model=m.id; b.dataset.rung=String(r);
+            b.setAttribute('aria-label',m.full+', '+label+' effort'); b.setAttribute('aria-pressed','false');
+            const description=document.createElement('span'); description.id='ef-desc-'+m.id+'-'+r;
+            description.style.cssText='position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;';
+            description.textContent=m.full+', '+label+': '+cueFor(m,r);
+            b.setAttribute('aria-describedby',description.id); b.appendChild(description);
+            const dot=document.createElement('span'); dot.className='ef-dot'; dot.setAttribute('aria-hidden','true'); b.appendChild(dot);
+            const text=document.createElement('span'); text.textContent=label; b.appendChild(text);
+            b.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch' && fine.matches){hoverButton=b;showFeedback(b);}});
+            b.addEventListener('pointerleave',()=>{if(hoverButton===b)hoverButton=null;showFeedback(focusButton);});
+            b.addEventListener('focus',()=>{focusButton=b;showFeedback(b);});
+            b.addEventListener('blur',()=>{if(focusButton===b)focusButton=null;showFeedback(hoverButton);});
+            b.addEventListener('click',()=>{state.m=m.id;state.r=r;state.manual=true;render(true);}); track.appendChild(b);
+          });
+          row.appendChild(track);
+          rows.appendChild(row);
+        });
+        const signal=document.createElement('span');signal.className='ef-signal';signal.setAttribute('aria-hidden','true');rows.appendChild(signal);
+        let lastPosition = null;
+        function positionSignal(animate){
+          const target=rows.querySelector('button[aria-pressed="true"] .ef-dot');
+          if(!target)return;
+          const bounds=target.getBoundingClientRect(),host=rows.getBoundingClientRect();
+          const next={x:bounds.left+bounds.width/2-host.left-9.5,y:bounds.top+bounds.height/2-host.top-9.5};
+          const from=getComputedStyle(signal).transform;
+          if(signalAnimation)signalAnimation.cancel();
+          const transform='translate('+next.x+'px,'+next.y+'px)';
+          signal.style.transform=transform;
+          if(animate && lastPosition && !reduced.matches && (Math.abs(next.x-lastPosition.x)>1 || Math.abs(next.y-lastPosition.y)>1)){
+            signalAnimation=signal.animate([{transform:from},{transform}],{duration:motionStyle.duration,easing:'cubic-bezier(.22,.61,.36,1)'});
+          }
+          lastPosition=next;
+        }
+        function render(animate=false){
+          const t=tasks[state.task],main=t.routes[0],suggested=models.find(x=>x.id===main.m);
+          root.querySelector('#ef-task-title').textContent=t.title;
+          root.querySelector('#ef-kind').textContent='From my log · '+ENV[t.env];
+          root.querySelector('#ef-model-answer').textContent=suggested.full;
+          root.querySelector('#ef-level-answer').textContent=main.r?labels[main.r]+' effort':'No reasoning';
+          const alt=root.querySelector('#ef-alt'); alt.replaceChildren();
+          if(t.routes[1]){ const b=document.createElement('b'); b.textContent=routeName(t.routes[1]); alt.append(document.createTextNode('or '),b,document.createTextNode(t.note?'. '+t.note:'')); }
+          else if(t.note){ alt.textContent=t.note; }
+          root.querySelector('#ef-reason').textContent=t.why;
+          const line=(el,s,label)=>{ el.replaceChildren(); if(!s)return; const b=document.createElement('b'); b.textContent=label+':'+(s.m?' '+shortName(s):''); el.append(b,document.createTextNode(' '+s.when)); };
+          line(root.querySelector('#ef-up'),t.up,'Step up');
+          line(root.querySelector('#ef-down'),t.down,'Step down');
+          root.querySelectorAll('.ef-point').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.model===state.m && Number(b.dataset.rung)===state.r)));
+          root.querySelectorAll('.ef-row').forEach(row=>{
+            const selected=row.dataset.model===state.m;
+            row.dataset.selected=String(selected);
+          });
+          root.querySelector('#ef-selection').textContent='Starting point: '+routeName(main)+(state.manual?'. Exploring: '+shortName(state)+'. The task recommendation is unchanged.':'. Select a setting to explore.');
+          showFeedback(null); positionSignal(animate);
+          if(animate && !state.manual && !reduced.matches){
+            if(settleAnimation)settleAnimation.cancel();
+            settleAnimation=root.querySelector('#ef-level-answer').animate([{transform:'translateY(4px)'},{transform:'translateY(0)'}],{duration:180,easing:'ease-out'});
+          }
+        }
+        root.querySelector('#ef-task').addEventListener('change',e=>{
+          state.task=e.target.value; const t=tasks[state.task]; state.m=t.routes[0].m;state.r=t.routes[0].r;state.manual=false;render(true);
+        });
+        // Reserve the tallest explanation at the current width so exploring a setting never moves the layout.
+        function reserveHeights(){
+          const fb=root.querySelector('#ef-feedback'); const keep=[...fb.childNodes];
+          fb.style.minHeight='0px'; let maxFb=0;
+          models.forEach(m=>{ for(let r=m.first;r<labels.length;r++){
+            fb.replaceChildren(); const t=document.createElement('b'); t.textContent='Exploring: '+m.name+' · '+labels[r]+'. ';
+            const c=document.createElement('span'); c.className='ef-cue'; c.textContent=m.note; fb.append(t,document.createTextNode(cueFor(m,r)),c);
+            maxFb=Math.max(maxFb,fb.scrollHeight);
+          }});
+          fb.replaceChildren(...keep); fb.style.minHeight=Math.max(92,maxFb)+'px';
+
+        }
+        render(); reserveHeights(); positionSignal(false);
+        let lastWidth=rows.clientWidth;
+        const observer=new ResizeObserver(()=>{
+          if(resizeRequest)cancelAnimationFrame(resizeRequest);
+          resizeRequest=requestAnimationFrame(()=>{ if(rows.clientWidth!==lastWidth){ lastWidth=rows.clientWidth; reserveHeights(); } positionSignal(false); });
+        });
+        observer.observe(rows);
+        document.fonts.ready.then(()=>{ reserveHeights(); positionSignal(false); });
+        reduced.addEventListener('change',()=>{
+          if(signalAnimation)signalAnimation.cancel();
+          if(settleAnimation)settleAnimation.cancel();
+          positionSignal(false);
+        });
+
+        // benchmark table, built from the snapshot above
+        const table=root.querySelector('#ef-bench');
+        const thead=document.createElement('thead'); const hr=document.createElement('tr');
+        ['Model','Low','Medium','High','Extra high','Max'].forEach(h=>{const th=document.createElement('th');th.scope='col';th.textContent=h;hr.appendChild(th);});
+        thead.appendChild(hr); table.appendChild(thead);
+        const tbody=document.createElement('tbody');
+        models.forEach(m=>{
+          const tr=document.createElement('tr'); const th=document.createElement('th'); th.scope='row'; th.textContent=m.full+(bench.config[m.id]||''); tr.appendChild(th);
+          bench.rows[m.id].forEach(([score,cost])=>{const c=document.createElement('td');c.textContent=score+' · $'+cost.toFixed(2);tr.appendChild(c);});
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+      })();
+    </script>
+  </main>
+
+  <footer class="site-foot">
+    <span>Field study · September 2026 · recovered edition September 12</span>
+    <span><a href="https://travismakes.org">travismakes.org</a></span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,206 @@
+{
+  "status": "draft rubric; not owner-graded and no model runs recorded",
+  "purpose": "Evaluate whether a future typed-task router follows the authored September 2026 map. This is not an effort-performance benchmark.",
+  "cases": [
+    {
+      "id": "r01",
+      "sourceCase": "t1",
+      "environment": "chat",
+      "prompt": "Turn these dictated notes into a tidy summary. Preserve names, numbers, and uncertainty; do not add analysis.",
+      "reviewCriteria": [
+        "faithful capture",
+        "no added interpretation"
+      ]
+    },
+    {
+      "id": "r02",
+      "sourceCase": "t1",
+      "environment": "chat",
+      "prompt": "Organize the supplied rough notes into headings and bullets. Nothing needs research or a new recommendation.",
+      "reviewCriteria": [
+        "use supplied notes only",
+        "preserve uncertainty"
+      ]
+    },
+    {
+      "id": "r03",
+      "sourceCase": "t2",
+      "environment": "chat",
+      "prompt": "I want to think aloud about a project idea. Help me explore it conversationally before we decide anything.",
+      "reviewCriteria": [
+        "conversation before decision",
+        "do not turn exploration into a commitment"
+      ]
+    },
+    {
+      "id": "r04",
+      "sourceCase": "t2",
+      "environment": "chat",
+      "prompt": "Talk through these ideas with me and keep the tone conversational. I am not asking for a formal investigation yet.",
+      "reviewCriteria": [
+        "match conversational scope",
+        "preserve open questions"
+      ]
+    },
+    {
+      "id": "r05",
+      "sourceCase": "t3",
+      "environment": "chat",
+      "prompt": "Compare the tradeoffs in these three tools using the supplied documentation. Untangle the differences before recommending one.",
+      "reviewCriteria": [
+        "separate tradeoffs",
+        "use supplied evidence"
+      ]
+    },
+    {
+      "id": "r06",
+      "sourceCase": "t3",
+      "environment": "chat",
+      "prompt": "These two explanations sound similar but lead to different decisions. Use the evidence I provided to clarify the distinction.",
+      "reviewCriteria": [
+        "identify the actual difference",
+        "preserve conflicting evidence"
+      ]
+    },
+    {
+      "id": "r07",
+      "sourceCase": "t4",
+      "environment": "chat",
+      "prompt": "Synthesize these research papers. Trace disagreements to the original evidence and distinguish what is established from what is uncertain.",
+      "reviewCriteria": [
+        "source quality and attribution",
+        "do not erase disagreement"
+      ]
+    },
+    {
+      "id": "r08",
+      "sourceCase": "t4",
+      "environment": "chat",
+      "prompt": "Analyze this complicated research question using the supplied sources and calculations. Explain the limits of the conclusion.",
+      "reviewCriteria": [
+        "verify calculations",
+        "state limits"
+      ]
+    },
+    {
+      "id": "r09",
+      "sourceCase": "t5",
+      "environment": "chat",
+      "prompt": "Develop an image concept from these visual references while tracking the constraints in the brief.",
+      "reviewCriteria": [
+        "honor creative constraints",
+        "effort does not select an image renderer"
+      ]
+    },
+    {
+      "id": "r10",
+      "sourceCase": "t5",
+      "environment": "chat",
+      "prompt": "Help develop production direction for a Suno track using these references. Keep the requested mood, pacing, and sound palette in view.",
+      "reviewCriteria": [
+        "preserve production constraints",
+        "avoid promising taste from effort alone"
+      ]
+    },
+    {
+      "id": "r11",
+      "sourceCase": "t6",
+      "environment": "review",
+      "prompt": "Explain what this one function does and identify its inputs and outputs. This is a small code inspection.",
+      "reviewCriteria": [
+        "bounded inspection",
+        "do not claim a full correctness review"
+      ]
+    },
+    {
+      "id": "r12",
+      "sourceCase": "t6",
+      "environment": "review",
+      "prompt": "Summarize the supplied small diff and where the changed label appears. No broad architecture review is needed.",
+      "reviewCriteria": [
+        "stay with the diff",
+        "report limits of inspection"
+      ]
+    },
+    {
+      "id": "r13",
+      "sourceCase": "t7",
+      "environment": "review",
+      "prompt": "Review this substantial change across modules against the requirements and tests. Investigate dependencies when the change warrants it.",
+      "reviewCriteria": [
+        "inspect underlying behavior",
+        "review requirements and evidence"
+      ]
+    },
+    {
+      "id": "r14",
+      "sourceCase": "t7",
+      "environment": "review",
+      "prompt": "Review an implementation that changes cross-file behavior. Challenge the builder’s claims with specific evidence.",
+      "reviewCriteria": [
+        "verify claims independently",
+        "identify material failure cases"
+      ]
+    },
+    {
+      "id": "r15",
+      "sourceCase": "t8",
+      "environment": "review",
+      "prompt": "Review this interface at desktop and phone sizes using the attached screenshots and running preview.",
+      "reviewCriteria": [
+        "inspect actual rendered UI",
+        "do not infer visual quality from code alone"
+      ]
+    },
+    {
+      "id": "r16",
+      "sourceCase": "t8",
+      "environment": "review",
+      "prompt": "Evaluate spacing, hierarchy, and readability in the supplied interface screenshots. Tie feedback to what is visible.",
+      "reviewCriteria": [
+        "visual evidence required",
+        "specific observable feedback"
+      ]
+    },
+    {
+      "id": "r17",
+      "sourceCase": "t9",
+      "environment": "build",
+      "prompt": "Implement a scoped fix using the existing familiar pattern. The input, expected behavior, and relevant test are supplied.",
+      "reviewCriteria": [
+        "bounded implementation",
+        "run the relevant check"
+      ]
+    },
+    {
+      "id": "r18",
+      "sourceCase": "t10",
+      "environment": "build",
+      "prompt": "Implement a difficult change with interacting requirements. The dependencies and constraints are available, but it needs careful reasoning.",
+      "reviewCriteria": [
+        "trace dependencies",
+        "verify the actual change"
+      ]
+    },
+    {
+      "id": "r19",
+      "sourceCase": "t11",
+      "environment": "build",
+      "prompt": "Build a substantial feature with interacting requirements and nuanced design decisions. The product brief defines the outcome.",
+      "reviewCriteria": [
+        "preserve interacting requirements",
+        "verify design and behavior"
+      ]
+    },
+    {
+      "id": "r20",
+      "sourceCase": "t12",
+      "environment": "build",
+      "prompt": "Plan and implement this architecture migration. Trace dependencies, preserve the required behavior, and verify the migration path.",
+      "reviewCriteria": [
+        "broad dependency reasoning",
+        "verify migration behavior"
+      ]
+    }
+  ]
+}

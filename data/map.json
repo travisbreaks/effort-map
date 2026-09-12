@@ -1,0 +1,374 @@
+{
+  "labels": [
+    "None",
+    "Low",
+    "Medium",
+    "High",
+    "Extra high",
+    "Max"
+  ],
+  "models": [
+    {
+      "id": "sol",
+      "name": "Sol",
+      "full": "GPT-5.6 Sol",
+      "version": "GPT-5.6 · OpenAI",
+      "vendor": "openai",
+      "first": 0,
+      "note": "OpenAI’s GPT-5.6 Sol. The only model in this map whose API accepts None effort."
+    },
+    {
+      "id": "astra",
+      "name": "Astra",
+      "full": "GPT-6 Astra",
+      "version": "GPT-6 · OpenAI",
+      "vendor": "openai",
+      "first": 1,
+      "note": "OpenAI’s GPT-6 Astra for complex reasoning and end-to-end work. Its API effort range starts at Low."
+    },
+    {
+      "id": "opus",
+      "name": "Opus 5",
+      "full": "Claude Opus 5",
+      "version": "Anthropic",
+      "vendor": "anthropic",
+      "first": 1,
+      "note": "Claude Opus 5. Thinking is on by default and can be disabled at High or below."
+    },
+    {
+      "id": "fable",
+      "name": "Fable 5.1",
+      "full": "Claude Fable 5.1",
+      "version": "Anthropic",
+      "vendor": "anthropic",
+      "first": 1,
+      "note": "Claude Fable 5.1 for long-horizon agentic work. Adaptive thinking is always on."
+    }
+  ],
+  "effortCue": {
+    "openai": [
+      "No reasoning effort. A separate Sol setting, not another name for Low.",
+      "Light in the ChatGPT apps: for quick, well-scoped tasks.",
+      "Balances speed and depth for tasks that need more planning.",
+      "For difficult work with multiple steps.",
+      "The higher of the two settings for difficult multi-step work. Test it against High on a specific unresolved problem.",
+      "More time for reasoning on a single task. Test whether it changes the result before keeping it."
+    ],
+    "anthropic": [
+      "",
+      "Fewest tokens and tool calls. Anthropic suggests lower effort once your checks show quality holds.",
+      "A balanced setting for bounded work. Keep it if your checks show quality holds.",
+      "Anthropic’s recommended starting point and the API default.",
+      "Anthropic’s setting for demanding, long-running agentic work. A candidate to test on harder tasks.",
+      "Highest effort setting for especially demanding work. Compare the result with Extra High before keeping it."
+    ]
+  },
+  "ENV": {
+    "chat": "ChatGPT in the browser and on my phone",
+    "review": "ChatGPT desktop app, reviewing my coding agent",
+    "build": "Claude Code in VS Code"
+  },
+  "tasks": {
+    "t1": {
+      "env": "chat",
+      "routes": [
+        {
+          "m": "sol",
+          "r": 1
+        },
+        {
+          "m": "sol",
+          "r": 2
+        }
+      ],
+      "note": "Astra Light is fine if it is already selected.",
+      "why": "The priority is faithful capture, not unsolicited analysis.",
+      "title": "Dictated notes, capture, summaries"
+    },
+    "t2": {
+      "env": "chat",
+      "routes": [
+        {
+          "m": "sol",
+          "r": 3
+        }
+      ],
+      "why": "Sol carries ordinary conversation well and keeps the conversational and editorial character I like.",
+      "up": {
+        "m": "astra",
+        "r": 2,
+        "when": "when another analytical approach or stronger constraint tracking would help."
+      },
+      "title": "Conversation and thinking aloud"
+    },
+    "t3": {
+      "env": "chat",
+      "routes": [
+        {
+          "m": "astra",
+          "r": 2
+        }
+      ],
+      "why": "Medium is Astra’s broad analytical band: quality and judgment without paying for High on every question.",
+      "up": {
+        "m": "astra",
+        "r": 3,
+        "when": "when important tradeoffs or contradictory evidence are being flattened."
+      },
+      "title": "Comparing tools, untangling questions"
+    },
+    "t4": {
+      "env": "chat",
+      "routes": [
+        {
+          "m": "astra",
+          "r": 3
+        }
+      ],
+      "why": "Source quality still matters more than the label.",
+      "up": {
+        "m": "astra",
+        "r": 4,
+        "when": "for unusually difficult synthesis, calculations, or verification."
+      },
+      "title": "Serious research and analysis"
+    },
+    "t5": {
+      "env": "chat",
+      "routes": [
+        {
+          "m": "sol",
+          "r": 3
+        },
+        {
+          "m": "astra",
+          "r": 2
+        }
+      ],
+      "why": "Image concepts, Suno direction, reference analysis. Higher effort does not select a better renderer and does not guarantee taste.",
+      "up": {
+        "when": "one rung up on the model in use when many creative constraints interact, or repeated attempts drift."
+      },
+      "title": "Art direction and reference analysis"
+    },
+    "t6": {
+      "env": "review",
+      "routes": [
+        {
+          "m": "astra",
+          "r": 2
+        }
+      ],
+      "why": "Locating code, explaining a function, a basic summary: a small inspection does not need the review default.",
+      "up": {
+        "m": "astra",
+        "r": 4,
+        "when": "when the request becomes a substantive correctness review."
+      },
+      "title": "Small diffs and explanations"
+    },
+    "t7": {
+      "env": "review",
+      "routes": [
+        {
+          "m": "astra",
+          "r": 4
+        }
+      ],
+      "why": "Cross-file behavior, architecture, requirements. Review is what I use the desktop app for, so Extra High is its standing default. Start with the change set; expand into dependencies only when warranted.",
+      "down": {
+        "m": "astra",
+        "r": 2,
+        "when": "for a small inspection, or bounded follow-through after the review."
+      },
+      "up": {
+        "m": "astra",
+        "r": 5,
+        "when": "when one specific hard issue is still unresolved after a checked attempt. Include the failed attempt, the evidence, and the exact issue."
+      },
+      "title": "Reviewing substantial changes"
+    },
+    "t8": {
+      "env": "review",
+      "routes": [
+        {
+          "m": "astra",
+          "r": 4
+        }
+      ],
+      "note": "With screenshots or the running interface in front of the reviewer.",
+      "why": "Code inspection alone cannot tell whether a design works visually.",
+      "title": "Visual review of an interface"
+    },
+    "t9": {
+      "env": "build",
+      "routes": [
+        {
+          "m": "opus",
+          "r": 2
+        }
+      ],
+      "why": "Familiar patterns and scoped fixes rarely need more.",
+      "up": {
+        "m": "opus",
+        "r": 3,
+        "when": "when dependencies are unclear, reasoning is shallow, or fixes fail."
+      },
+      "title": "Routine implementation"
+    },
+    "t10": {
+      "env": "build",
+      "routes": [
+        {
+          "m": "opus",
+          "r": 3
+        }
+      ],
+      "why": "High is the vendor’s starting point on Opus 5. Extra High is justified by the work, never a standing default.",
+      "up": {
+        "m": "opus",
+        "r": 4,
+        "when": "only if the specific problem remains unresolved."
+      },
+      "title": "Difficult implementation"
+    },
+    "t11": {
+      "env": "build",
+      "routes": [
+        {
+          "m": "fable",
+          "r": 3
+        }
+      ],
+      "why": "Many interacting requirements need the planning High buys.",
+      "down": {
+        "m": "fable",
+        "r": 2,
+        "when": "for mechanical follow-through once the decisions are settled."
+      },
+      "title": "Substantial features, nuanced design"
+    },
+    "t12": {
+      "env": "build",
+      "routes": [
+        {
+          "m": "fable",
+          "r": 4
+        }
+      ],
+      "why": "Broad dependency changes and hard bugs are where I spend Extra High: the vendor’s setting for capability-sensitive, long-horizon work.",
+      "down": {
+        "m": "fable",
+        "r": 3,
+        "when": "once the problem is understood and bounded."
+      },
+      "up": {
+        "m": "fable",
+        "r": 5,
+        "when": "for one clearly defined frontier problem after a checked attempt."
+      },
+      "title": "Architecture, migrations, hard debugging"
+    }
+  },
+  "bench": {
+    "label": "Artificial Analysis Intelligence Index v4.3",
+    "checked": "September 8, 2026",
+    "rows": {
+      "sol": [
+        [
+          34,
+          0.26
+        ],
+        [
+          39,
+          0.5
+        ],
+        [
+          42,
+          0.81
+        ],
+        [
+          44,
+          1.18
+        ],
+        [
+          47,
+          1.99
+        ]
+      ],
+      "astra": [
+        [
+          46,
+          0.82
+        ],
+        [
+          50,
+          1.54
+        ],
+        [
+          51,
+          1.72
+        ],
+        [
+          53,
+          2.31
+        ],
+        [
+          53,
+          3.26
+        ]
+      ],
+      "opus": [
+        [
+          40,
+          1.1
+        ],
+        [
+          45,
+          2.19
+        ],
+        [
+          48,
+          3.61
+        ],
+        [
+          50,
+          4.88
+        ],
+        [
+          51,
+          5.86
+        ]
+      ],
+      "fable": [
+        [
+          47,
+          2.37
+        ],
+        [
+          49,
+          2.98
+        ],
+        [
+          51,
+          3.91
+        ],
+        [
+          53,
+          5.98
+        ],
+        [
+          53,
+          7.63
+        ]
+      ]
+    },
+    "config": {
+      "fable": " (default fallback)"
+    },
+    "verification": "Historical snapshot preserved from V4; benchmark values were not independently rechecked during recovery."
+  },
+  "edition": "2026-09-12",
+  "fieldStudy": "September 2026",
+  "sourcesChecked": "2026-09-12"
+}
