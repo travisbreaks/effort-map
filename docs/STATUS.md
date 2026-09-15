@@ -2,8 +2,8 @@
 
 September 14, 2026. The effort map is published: this repository is public, and the
 page is live at [travismakes.org/effort-map](https://travismakes.org/effort-map/).
-The live page is still the September 12 build. The September 14 work below changes the
-page source and has not been deployed.
+The live page is the September 14 build, deployed as Worker version `7af44ba5` and
+verified on both hostnames the same night.
 
 ## What is live
 
@@ -65,8 +65,13 @@ no console errors, warnings, or exceptions. Both failure paths of `scripts/watch
 exercised deliberately: a changed stored value and a probe whose sentence stops matching
 each report the affected claim and exit non-zero.
 
-Not verified for the September 14 build: real phone hardware, Safari, Firefox, a screen
-reader, and the deployed copy, which has not been redeployed.
+The deployed copy was then checked. Both `travismakes.org/effort-map/` and the `www`
+address returned 200 with bodies byte-identical to `site/index.html`, the bare path
+redirected to the trailing slash on both, the security headers were present, and headless
+Chrome at 320, 390, and 1280 pixels showed no horizontal overflow and no console errors.
+
+Not verified for the September 14 build: real phone hardware, Safari, Firefox, and a
+screen reader.
 
 The recovery work on September 12 also exercised all twenty-one settings at 1280, 768,
 390, and 320 pixels, keyboard activation, light and dark rendering, and reduced motion.
