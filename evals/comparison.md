@@ -1,7 +1,9 @@
 # Compare two effort settings on the same work
 
 Use this worksheet for actual task performance. The routing fixtures in this folder
-answer a different question: whether a proposed router follows the authored map.
+answer a different question: whether a proposed router follows the authored map. For
+Ultra and Ultracode, where the variable is delegation rather than depth, use
+[orchestration-trial.md](orchestration-trial.md), then return here for the table.
 
 ## Define the trial before running it
 

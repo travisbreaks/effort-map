@@ -1,0 +1,28 @@
+name: watch
+
+# Weekly read of the vendor documentation this map cites. It fetches public pages,
+# compares the pinned sentences with data/watch-baseline.json, and fails when one
+# moves or disappears. No secrets, no writes, no deploy: a failure is a request to
+# read the page and decide, not an error in the build.
+#
+# GitHub disables scheduled workflows in a repository with 60 days of no activity,
+# and a scheduled run can start later than its cron time.
+
+on:
+  schedule:
+    - cron: '17 14 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Compare vendor documentation with the recorded baseline
+        run: node scripts/watch.mjs

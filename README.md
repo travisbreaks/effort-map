@@ -47,6 +47,29 @@ Then open `http://127.0.0.1:8768`. Stop the preview with Ctrl+C.
 committed generated files are current, runs the checks, and packages the deployment.
 It holds no secrets and does not deploy.
 
+## Watch the vendor facts
+
+Effort levels, model names, and client menus change without notice. `watch.mjs` fetches
+the six vendor pages this map cites, compares eighteen pinned sentences against
+[data/watch-baseline.json](data/watch-baseline.json), and reports each sentence that
+moved or stopped matching. Every probe records which claim on the map it protects.
+
+```sh
+node scripts/watch.mjs
+```
+
+It exits non-zero when something moved. Read the page, change the map if a fact actually
+changed, then record the new wording:
+
+```sh
+node scripts/watch.mjs --update
+```
+
+[A weekly workflow](.github/workflows/watch.yml) runs the comparison and fails when it
+finds drift. This is the only part of the project that uses the network: the build, the
+checks, and the page itself make no requests. It compares published wording only. It does
+not verify model behavior, benchmark numbers, or what a client menu actually offers you.
+
 ## Deploy it
 
 The page is served at `travismakes.org/effort-map/` by this repository’s own Cloudflare
@@ -72,6 +95,8 @@ typing them into shell history.
 | [scripts/build.mjs](scripts/build.mjs) | Embed data and generate HTML plus the complete Markdown guide |
 | [scripts/check.mjs](scripts/check.mjs) | Build, policy-preservation, fixture, and link checks |
 | [scripts/package.mjs](scripts/package.mjs) | Assemble `dist/` for the Cloudflare deploy |
+| [scripts/watch.mjs](scripts/watch.mjs) | Compare the cited vendor pages with the recorded baseline |
+| [data/watch-baseline.json](data/watch-baseline.json) | Pinned vendor sentences, what each protects, and the date read |
 | [site/index.html](site/index.html) | Generated portable deliverable; do not edit directly |
 | [evals/cases.json](evals/cases.json) | Twenty draft prompt variants for evaluating a future router |
 | [docs/SOURCES.md](docs/SOURCES.md) | Sources, dates, provenance, and limits |
