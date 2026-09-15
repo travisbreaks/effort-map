@@ -42,6 +42,11 @@ Use [comparison.md](comparison.md) with actual outputs and acceptance checks. Ho
 the task, prompt, sources, model, and tool availability constant; vary effort in fresh
 sessions. Measure missed requirements, rework, time, and observable usage.
 
+When the variable is delegation rather than depth, use
+[orchestration-trial.md](orchestration-trial.md). Ultra and Ultracode change how the work is
+organized, so they need a third arm that asks a single agent to delegate explicitly, and a
+check that the client actually spawned subagents before any score counts.
+
 Five easy tasks at Low and five hard tasks at High do not isolate effort. Nor does a
 router agreeing with its own reference prove that its recommendation is efficient.
 Useful evidence is the same work meeting the same checks at a justifiable cost.

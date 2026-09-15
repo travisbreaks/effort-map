@@ -232,6 +232,22 @@
     </details>
 
     <details>
+      <summary>What effort means at each vendor</summary>
+      <div class="ef-reading">
+        <p>The two ladders borrow the same words for different mechanisms. Matching labels are a naming overlap, not a shared unit.</p>
+        <p><b>OpenAI scopes effort to reasoning</b>, and the accepted range varies by model. Astra accepts Low through Max. Sol adds None. A published default is not guaranteed: the Sol specification names Medium, and the Astra specification names no default at all.</p>
+        <p><b>Anthropic scopes effort to every output token</b>, tool calls and their arguments included, so a lower setting also produces fewer and terser tool calls rather than only shorter thinking. High is the documented default, and setting High is exactly the same as omitting the parameter. Anthropic calls effort a behavioral signal rather than a strict token budget, and its current lineup is close to uniform, with the caveat that not every model supporting Max supports Extra High.</p>
+        <p>Model-specific rules sit under the shared labels. On Opus 5, thinking cannot be disabled at Extra High or Max: those requests return a 400 error. Fable keeps thinking on at every level. Fable 5.1 and Opus 5 also accept a per-message effort change mid-conversation, in beta, so effort is not necessarily fixed for a whole session.</p>
+        <p>None of this makes one ladder deeper than the other. It means a step that looks equivalent changes different things, and costs differently, on each side.</p>
+        <div class="ef-sources">
+          <a href="https://developers.openai.com/api/docs/models/gpt-6-astra" rel="noopener">Astra specification</a>
+          <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol" rel="noopener">Sol specification</a>
+          <a href="https://platform.claude.com/docs/en/build-with-claude/effort" rel="noopener">Claude effort guidance</a>
+        </div>
+      </div>
+    </details>
+
+    <details>
       <summary>The short version of my routing</summary>
       <div class="ef-reading">
         <ol class="ef-rule">
@@ -255,10 +271,13 @@
         <p>Two product settings sit outside these effort ladders because they change how the work is organized, not only how hard one model thinks.</p>
         <p><b>Ultra</b>, in ChatGPT Work on eligible accounts and supported models, uses maximum reasoning and lets ChatGPT delegate suitable work to subagents on its own when parallel agents would materially improve speed or quality. At other levels you ask for subagents explicitly. Current local Codex releases spawn agents only after a direct request or an applicable project or skill instruction, so the same setting name does not promise the same behavior in every client.</p>
         <p><b>Ultracode</b>, in Claude Code, is a session setting rather than a model effort value. It sends Extra High to the model and switches on dynamic workflows for substantive tasks.</p>
+        <p>Both clients show six rungs over a five-rung API. The Codex level selector numbers Ultra as its sixth entry, and Claude Code offers Ultracode above Max, yet neither word is an effort value in the model API that client calls. OpenAI does accept ultra as an effort value when configuring subagents, which is a second namespace rather than a sixth level on Astra. Read a client ladder and an API range as separate lists.</p>
+        <p>No independent benchmark measures either mode. Artificial Analysis lists five Astra effort variants and stops at Max, read September 14, 2026, so a number claiming Ultra beats Max is not something you can check. What you can check is a matched trial on one of your own divisible tasks.</p>
         <p>Use either only when independent workstreams make parallel work worth its overhead. Neither is a higher rung on a single model's ladder.</p>
         <div class="ef-sources">
           <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" rel="noopener">ChatGPT subagents and Ultra</a>
           <a href="https://code.claude.com/docs/en/model-config" rel="noopener">Claude Code model configuration</a>
+          <a href="https://artificialanalysis.ai/models/releases/gpt-6-astra" rel="noopener">Astra effort variants on Artificial Analysis</a>
         </div>
       </div>
     </details>

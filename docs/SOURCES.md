@@ -28,6 +28,36 @@ Equal effort labels do not establish equal compute or capability across models. 
 product mode, the model, available tools, and permissions are separate controls. The
 map does not detect or change the settings in your actual assistant.
 
+## Rechecked and extended September 14, 2026
+
+The September 12 table above was reread against the same primary pages. Nothing in it
+had changed. The facts below were added on September 14 and are the basis of the page
+section on what effort means at each vendor.
+
+| Fact used here | Primary source |
+| --- | --- |
+| Astra states `reasoning.effort supports low, medium, high, xhigh, and max`, and publishes no default. Sol publishes Medium as its default. | [Astra specification](https://developers.openai.com/api/docs/models/gpt-6-astra), [Sol specification](https://developers.openai.com/api/docs/models/gpt-5.6-sol) |
+| Anthropic effort covers all output tokens, including tool calls and their arguments, so lower effort also means fewer and terser tool calls. High is the default and is identical to omitting the parameter. Effort is a behavioral signal, not a strict token budget, and not every model supporting Max supports Extra High. | [Claude effort](https://platform.claude.com/docs/en/build-with-claude/effort) |
+| On Opus 5, thinking cannot be disabled at Extra High or Max: those requests return a 400 error. Fable 5.1 and Opus 5 accept a per-message effort change mid-conversation, in beta. | [Claude effort](https://platform.claude.com/docs/en/build-with-claude/effort) |
+| The Codex level selector numbers Ultra as its sixth entry, above Max. The documented Astra rollout of the ChatGPT Power options ends at Astra Extra High, so one client can omit both ends of that ladder. | [ChatGPT models and Power](https://learn.chatgpt.com/docs/models) |
+| `ultra` is an accepted subagent `model_reasoning_effort` value, while the Astra model specification does not list it. The same word is an effort value in the agent-configuration namespace and a product mode in the client, and is not a sixth level on the model. | [Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Astra specification](https://developers.openai.com/api/docs/models/gpt-6-astra) |
+| Ultracode sends Extra High and plans a dynamic workflow per substantive task. | [Claude Code model configuration](https://code.claude.com/docs/en/model-config) |
+
+Artificial Analysis lists five Astra effort variants and stops at Max. No published
+independent benchmark measures Ultra or Ultracode, which is why
+[the orchestration trial](../evals/orchestration-trial.md) is a design rather than a
+result. Read September 14, 2026:
+[Astra effort variants](https://artificialanalysis.ai/models/releases/gpt-6-astra).
+
+The five Astra values on that page match the September 8 snapshot below exactly. That
+recheck covers one of four model rows and does not revalidate the rest of the table.
+
+Eighteen sentences behind these two tables are pinned in
+[the watch baseline](../data/watch-baseline.json) and compared weekly by
+`scripts/watch.mjs`, which names the claim each one protects and reports when the
+published wording moves or stops matching. The watcher reads wording. It does not
+verify model behavior, and a page can change a fact in a sentence no probe pins.
+
 ## Historical benchmark, kept separate
 
 The optional table preserves the original September 8 Artificial Analysis Intelligence

@@ -1,0 +1,103 @@
+{
+  "checkedUTC": "2026-09-15",
+  "sources": {
+    "astra": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "sol": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+    "chatgpt": "https://learn.chatgpt.com/docs/models",
+    "subagents": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+    "effort": "https://platform.claude.com/docs/en/build-with-claude/effort.md",
+    "claudecode": "https://code.claude.com/docs/en/model-config.md"
+  },
+  "probes": {
+    "astra-effort-enum": {
+      "protects": "Astra ladder starts at Low and ends at Max",
+      "source": "astra",
+      "value": "low , medium , high , xhigh , and max"
+    },
+    "sol-effort-enum": {
+      "protects": "Sol is the one model here whose API accepts None",
+      "source": "sol",
+      "value": "none, low, medium (default), high, xhigh, and max"
+    },
+    "codex-level-ladder": {
+      "protects": "Six client rungs, the sixth being orchestration",
+      "source": "chatgpt",
+      "value": "Low Fast responses with lighter reasoning 2 . Medium (default) Balances speed and reasoning depth for everyday tasks 3 . High Greater reasoning depth for complex problems 4 . Extra high Extra high reasoning depth for complex problems 5 . Max Maximum reasoning depth for the hardest problems › 6 . Ultra (current) Maximum reasoning with automatic task delegation"
+    },
+    "chatgpt-ultra-mode": {
+      "protects": "Ultra organizes work rather than deepening one run",
+      "source": "chatgpt",
+      "value": "It uses subagents to accelerate complex work, making it useful for larger tasks that can be split across subagents."
+    },
+    "chatgpt-astra-power-options": {
+      "protects": "An app menu can show fewer levels than the API",
+      "source": "chatgpt",
+      "value": "Terra Light, Sol Light, Sol Medium, Astra Light, Astra Medium, and Astra Extra High"
+    },
+    "subagents-ultra-availability": {
+      "protects": "Ultra is gated, and is maximum reasoning plus delegation",
+      "source": "subagents",
+      "value": "eligible accounts and supported models | maximum reasoning and lets ChatGPT proactively delegate suitable work to subagents"
+    },
+    "subagents-intelligence-levels": {
+      "protects": "The composer levels differ from the API enum",
+      "source": "subagents",
+      "value": "Light , Medium , High , Extra High , and Max , depending on the selected model"
+    },
+    "subagents-effort-values": {
+      "protects": "ultra is an effort value in the agent-configuration namespace",
+      "source": "subagents",
+      "value": "ultra : Use for the deepest reasoning when the selected model supports it. max and xhigh : Use for especially demanding reasoning when the selected model supports these levels."
+    },
+    "subagents-inheritance": {
+      "protects": "Subagents inherit the parent model and effort",
+      "source": "subagents",
+      "value": "the parent agent's model and reasoning effort"
+    },
+    "codex-delegation-trigger": {
+      "protects": "A client can withhold behavior the setting name implies",
+      "source": "subagents",
+      "value": "delegate when you ask directly or when applicable AGENTS.md or skill instructions request it"
+    },
+    "anthropic-effort-models": {
+      "protects": "Which Claude models accept effort at all",
+      "source": "effort",
+      "value": "`claude-fable-5-1`, `claude-mythos-5-1`, `claude-fable-5`, `claude-mythos-5`, `claude-mythos-preview`, `claude-opus-5`, `claude-opus-4-8`, `claude-opus-4-7`, `claude-opus-4-6`, `claude-opus-4-5-20251101`, `claude-sonnet-5`, `claude-sonnet-4-6`"
+    },
+    "anthropic-default-effort": {
+      "protects": "High is the documented Anthropic default",
+      "source": "effort",
+      "value": "high effort, spending as many tokens as needed for excellent results"
+    },
+    "anthropic-high-equivalence": {
+      "protects": "High is exactly the same as omitting the parameter",
+      "source": "effort",
+      "value": "exactly the same behavior as omitting the `effort` parameter entirely"
+    },
+    "anthropic-effort-scope": {
+      "protects": "Anthropic effort covers all output tokens, not only thinking",
+      "source": "effort",
+      "value": "* Text responses and explanations * Tool calls and function arguments * Thinking (when active)"
+    },
+    "anthropic-xhigh-gap": {
+      "protects": "The Anthropic ladder is not uniform across every model",
+      "source": "effort",
+      "value": "Not every model that supports `max` supports `xhigh`."
+    },
+    "anthropic-behavioral-signal": {
+      "protects": "Effort is not a token budget",
+      "source": "effort",
+      "value": "not a strict token budget"
+    },
+    "opus5-thinking-lock": {
+      "protects": "Opus 5 refuses disabled thinking at the top two rungs",
+      "source": "effort",
+      "value": "requests that set `thinking: {\"type\": \"disabled\"}` at those levels return a 400 error"
+    },
+    "claude-code-ultracode": {
+      "protects": "Ultracode is Extra High plus workflows, not a sixth API rung",
+      "source": "claudecode",
+      "value": "A Claude Code setting that plans a [dynamic workflow](/docs/en/workflows) for each substantive task with `xhigh` per-message reasoning"
+    }
+  }
+}
