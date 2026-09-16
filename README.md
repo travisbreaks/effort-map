@@ -102,6 +102,7 @@ typing them into shell history.
 | [docs/SOURCES.md](docs/SOURCES.md) | Sources, dates, provenance, and limits |
 | [docs/STATUS.md](docs/STATUS.md) | Current verified state and remaining decisions |
 | [wrangler.jsonc](wrangler.jsonc) | Worker name, routes, and static asset settings |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | What kinds of change are welcome, and how to send one |
 
 ## Status
 
