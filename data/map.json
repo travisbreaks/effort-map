@@ -58,7 +58,7 @@
       "",
       "Fewest tokens and tool calls. Anthropic suggests lower effort once your checks show quality holds.",
       "A balanced setting for bounded work. Keep it if your checks show quality holds.",
-      "Anthropic’s recommended starting point and the API default.",
+      "Anthropic’s recommended starting point and the API default on Fable 5.1 and Opus 5.",
       "Anthropic’s setting for demanding, long-running agentic work. A candidate to test on harder tasks.",
       "Highest effort setting for especially demanding work. Compare the result with Extra High before keeping it."
     ]
