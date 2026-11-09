@@ -25,8 +25,8 @@ verified on both hostnames the same night.
 - A page section on what effort means at each vendor: OpenAI scopes effort to reasoning
   and varies the range by model; Anthropic scopes it to every output token including tool
   calls, defaults to High, and calls it a behavioral signal rather than a token budget.
-- The orchestration section now states that both clients show six rungs over a five-rung
-  API, that `ultra` is an effort value in the subagent configuration namespace rather than
+- The orchestration section now states that each client offers something beyond its effort
+  levels (Ultra, Ultracode) that is not a model API effort value, that `ultra` is an effort value in the subagent configuration namespace rather than
   a sixth level on Astra, and that no independent benchmark measures Ultra or Ultracode.
 - `scripts/watch.mjs` and a weekly workflow compare eighteen pinned vendor sentences with
   [the baseline](../data/watch-baseline.json). Both failure paths were exercised: a changed
