@@ -22,7 +22,7 @@ and adds evaluation materials. Original private paths remain outside shared file
 | Fable 5.1 and Opus 5 support Low, Medium, High, Extra High, and Max. Anthropic starts both at High and advises evaluating changes. Effort is not a fixed token budget or a reliable response-length control. | [Claude effort](https://platform.claude.com/docs/en/build-with-claude/effort) |
 | Fable’s adaptive thinking is always on; Opus can disable thinking at High or below. | [Fable overview](https://platform.claude.com/docs/en/models/fable-5-1/overview), [Opus overview](https://platform.claude.com/docs/en/models/opus-5/overview) |
 | ChatGPT Work Ultra can proactively delegate on eligible accounts and models. Current local Codex delegation requires a request or applicable project/skill instruction. | [Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) |
-| Claude Code Ultracode combines Extra High with dynamic workflows. It is a product mode, not another API effort level. | [Claude Code model configuration](https://code.claude.com/docs/en/model-config) |
+| Claude Code Ultracode adds dynamic workflows at whichever effort level the session runs at. It is a product setting, not another API effort level. | [Claude Code model configuration](https://code.claude.com/docs/en/model-config) |
 
 Equal effort labels do not establish equal compute or capability across models. A
 product mode, the model, available tools, and permissions are separate controls. The
@@ -37,11 +37,11 @@ section on what effort means at each vendor.
 | Fact used here | Primary source |
 | --- | --- |
 | Astra states `reasoning.effort supports low, medium, high, xhigh, and max`, and publishes no default. Sol publishes Medium as its default. | [Astra specification](https://developers.openai.com/api/docs/models/gpt-6-astra), [Sol specification](https://developers.openai.com/api/docs/models/gpt-5.6-sol) |
-| Anthropic effort covers all output tokens, including tool calls and their arguments, so lower effort also means fewer and terser tool calls. High is the default and is identical to omitting the parameter. Effort is a behavioral signal, not a strict token budget, and not every model supporting Max supports Extra High. | [Claude effort](https://platform.claude.com/docs/en/build-with-claude/effort) |
+| Anthropic effort covers all output tokens, including tool calls and their arguments, so lower effort also means fewer and terser tool calls. High is the default on most models (Opus 5.5 and Haiku 5.5 default to Medium), and a model’s default level is identical to omitting the parameter. Effort is a behavioral signal, not a strict token budget, and not every model supporting Max supports Extra High. | [Claude effort](https://platform.claude.com/docs/en/build-with-claude/effort) |
 | On Opus 5, thinking cannot be disabled at Extra High or Max: those requests return a 400 error. Fable 5.1 and Opus 5 accept a per-message effort change mid-conversation, in beta. | [Claude effort](https://platform.claude.com/docs/en/build-with-claude/effort) |
-| The Codex level selector numbers Ultra as its sixth entry, above Max. The documented Astra rollout of the ChatGPT Power options ends at Astra Extra High, so one client can omit both ends of that ladder. | [ChatGPT models and Power](https://learn.chatgpt.com/docs/models) |
+| The ChatGPT model guide treats Max as deeper reasoning on a single task and Ultra as subagent delegation across parts of a task. The documented Astra rollout of the ChatGPT Power options ends at Astra Extra High, so one client can omit both ends of that ladder. | [ChatGPT models and Power](https://learn.chatgpt.com/docs/models) |
 | `ultra` is an accepted subagent `model_reasoning_effort` value, while the Astra model specification does not list it. The same word is an effort value in the agent-configuration namespace and a product mode in the client, and is not a sixth level on the model. | [Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Astra specification](https://developers.openai.com/api/docs/models/gpt-6-astra) |
-| Ultracode sends Extra High and plans a dynamic workflow per substantive task. | [Claude Code model configuration](https://code.claude.com/docs/en/model-config) |
+| Ultracode plans a dynamic workflow per substantive task at any effort level; the `--effort ultracode` flag also sets Extra High. | [Claude Code model configuration](https://code.claude.com/docs/en/model-config) |
 
 Artificial Analysis lists five Astra effort variants and stops at Max. No published
 independent benchmark measures Ultra or Ultracode, which is why
