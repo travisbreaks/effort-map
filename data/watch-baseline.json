@@ -1,5 +1,5 @@
 {
-  "checkedUTC": "2026-11-08",
+  "checkedUTC": "2026-11-10",
   "sources": {
     "astra": "https://developers.openai.com/api/docs/models/gpt-6-astra",
     "sol": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
@@ -62,7 +62,7 @@
     "anthropic-effort-models": {
       "protects": "Which Claude models accept effort at all",
       "source": "effort",
-      "value": "- claude-fable-5-1 - claude-mythos-5-1 - claude-fable-5 - claude-mythos-5 - claude-mythos-preview - claude-opus-5-5 - claude-opus-5 - claude-sonnet-5-5 - claude-sonnet-5 - claude-haiku-5-5 - claude-opus-4-8 - claude-opus-4-7 - claude-opus-4-6 - claude-sonnet-4-6 - claude-opus-4-5-20251101"
+      "value": "- claude-fable-5-2 - claude-mythos-5-2 - claude-fable-5-1 - claude-mythos-5-1 - claude-fable-5 - claude-mythos-5 - claude-mythos-preview - claude-opus-5-5 - claude-opus-5 - claude-sonnet-5-5 - claude-sonnet-5 - claude-haiku-5-5 - claude-opus-4-8 - claude-opus-4-7 - claude-opus-4-6 - claude-sonnet-4-6 - claude-opus-4-5-20251101"
     },
     "anthropic-default-effort": {
       "protects": "High is the documented Anthropic default on most models; Opus 5.5 and Haiku 5.5 default to Medium",
